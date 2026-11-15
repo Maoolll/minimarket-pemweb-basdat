@@ -1,0 +1,74 @@
+createdb minimarket
+
+CREATE TABLE jenis_produk (
+  id_jenis_produk INT PRIMARY KEY,
+  nama_jenis_produk VARCHAR(200),
+  keterangan VARCHAR(100)
+);
+
+CREATE TABLE produk (
+  id_produk INT PRIMARY KEY,
+  id_jenis_produk INT,
+  nama_produk VARCHAR(200),
+  harga_satuan DECIMAL(12,2),
+  merek VARCHAR(100),
+  jumlah_stok INT,
+  minimum_stok INT,
+  CONSTRAINT produk_fk_id_jenis_produk FOREIGN KEY (id_jenis_produk) REFERENCES jenis_produk (id_jenis_produk)
+);
+
+CREATE TABLE logistik (
+  id_logistik INT PRIMARY KEY,
+  id_produk INT,
+  stok_barang_masuk INT,
+  tanggal_masuk DATE,
+  CONSTRAINT logistik_fk_id_produk FOREIGN KEY (id_produk) REFERENCES produk (id_produk)
+);
+
+CREATE TABLE pembeli (
+  id_pembeli INT PRIMARY KEY,
+  nama_pembeli VARCHAR(200),
+  no_telp VARCHAR(16),
+  email VARCHAR(100),
+  total_poin INT
+);
+
+CREATE TABLE jadwal_shift (
+  id_jadwal INT PRIMARY KEY,
+  jam_masuk TIME,
+  jam_selesai TIME,
+  hari VARCHAR(16)
+);
+
+CREATE TABLE pegawai (
+  id_pegawai INT PRIMARY KEY,
+  id_jadwal INT,
+  nama VARCHAR(200),
+  jenis_kelamin VARCHAR(10),
+  no_telp VARCHAR(16),
+  jabatan VARCHAR(50),
+  alamat VARCHAR(300),
+  CONSTRAINT pegawai_fk_id_jadwal FOREIGN KEY (id_jadwal) REFERENCES jadwal_shift (id_jadwal)
+);
+
+CREATE TABLE transaksi (
+  kode_transaksi INT PRIMARY KEY,
+  id_pembeli INT,
+  id_pegawai INT,
+  total_pembayaran DECIMAL(12,2),
+  metode_pembayaran VARCHAR(50),
+  tanggal_transaksi DATE,
+  poin_transaksi INT,
+  CONSTRAINT transaksi_fk_id_pembeli FOREIGN KEY (id_pembeli) REFERENCES pembeli (id_pembeli),
+  CONSTRAINT transaksi_fk_id_pegawai FOREIGN KEY (id_pegawai) REFERENCES pegawai (id_pegawai)
+);
+
+CREATE TABLE detail_transaksi (
+  id_detail_transaksi INT PRIMARY KEY,
+  kode_transaksi INT,
+  id_produk INT,
+  jumlah_produk INT,
+  subtotal DECIMAL(12,2),
+  CONSTRAINT detail_transaksi_fk_kode_transaksi FOREIGN KEY (kode_transaksi) REFERENCES transaksi (kode_transaksi),
+  CONSTRAINT detail_transaksi_fk_id_produk FOREIGN KEY (id_produk) REFERENCES produk (id_produk)
+);
