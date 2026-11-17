@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict tRwVNZ9vx1nVmi9qZ4GWla4o52VRcnSmlSxPFkC6dqi0famrU5Hm01gCabwmygV
+\restrict 7bmi6I1lNf3jHS5QGUoxmxNStkzerXYqJY188dGNoWQNahiI4qwGcXXawTEtTsX
 
 -- Dumped from database version 18.6
 -- Dumped by pg_dump version 18.6
@@ -29,10 +29,11 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.detail_transaksi (
     id_detail_transaksi integer NOT NULL,
-    kode_transaksi integer,
-    id_produk integer,
+    kode_transaksi integer NOT NULL,
+    id_produk integer NOT NULL,
     jumlah_produk integer,
-    subtotal numeric(12,2)
+    subtotal numeric,
+    CONSTRAINT detail_transaksi_jumlah_produk_check CHECK ((jumlah_produk > 0))
 );
 
 
@@ -71,7 +72,7 @@ ALTER TABLE public.jenis_produk OWNER TO yuki;
 
 CREATE TABLE public.logistik (
     id_logistik integer NOT NULL,
-    id_produk integer,
+    id_produk integer NOT NULL,
     stok_barang_masuk integer,
     tanggal_masuk date
 );
@@ -85,11 +86,11 @@ ALTER TABLE public.logistik OWNER TO yuki;
 
 CREATE TABLE public.pegawai (
     id_pegawai integer NOT NULL,
-    id_jadwal integer,
-    nama character varying(200),
+    id_jadwal integer NOT NULL,
+    nama character varying(200) NOT NULL,
     jenis_kelamin character varying(10),
     no_telp character varying(16),
-    jabatan character varying(50),
+    jabatan character varying(50) NOT NULL,
     alamat character varying(300)
 );
 
@@ -102,7 +103,7 @@ ALTER TABLE public.pegawai OWNER TO yuki;
 
 CREATE TABLE public.pembeli (
     id_pembeli integer NOT NULL,
-    nama_pembeli character varying(200),
+    nama_pembeli character varying(200) NOT NULL,
     no_telp character varying(16),
     email character varying(100),
     total_poin integer
@@ -117,12 +118,13 @@ ALTER TABLE public.pembeli OWNER TO yuki;
 
 CREATE TABLE public.produk (
     id_produk integer NOT NULL,
-    id_jenis_produk integer,
-    nama_produk character varying(200),
-    harga_satuan numeric(12,2),
-    merek character varying(100),
+    id_jenis_produk integer NOT NULL,
+    nama_produk character varying(200) NOT NULL,
+    harga_satuan numeric NOT NULL,
+    merek character varying(100) NOT NULL,
     jumlah_stok integer,
-    minimum_stok integer
+    minimum_stok integer,
+    CONSTRAINT produk_harga_satuan_check CHECK ((harga_satuan > (0)::numeric))
 );
 
 
@@ -134,11 +136,11 @@ ALTER TABLE public.produk OWNER TO yuki;
 
 CREATE TABLE public.transaksi (
     kode_transaksi integer NOT NULL,
-    id_pembeli integer,
-    id_pegawai integer,
-    total_pembayaran numeric(12,2),
-    metode_pembayaran character varying(50),
-    tanggal_transaksi date,
+    id_pembeli integer NOT NULL,
+    id_pegawai integer NOT NULL,
+    total_pembayaran numeric,
+    metode_pembayaran character varying(50) NOT NULL,
+    tanggal_transaksi date DEFAULT CURRENT_DATE NOT NULL,
     poin_transaksi integer
 );
 
@@ -250,6 +252,22 @@ ALTER TABLE ONLY public.pegawai
 
 
 --
+-- Name: pembeli pembeli_email_key; Type: CONSTRAINT; Schema: public; Owner: yuki
+--
+
+ALTER TABLE ONLY public.pembeli
+    ADD CONSTRAINT pembeli_email_key UNIQUE (email);
+
+
+--
+-- Name: pembeli pembeli_no_telp_key; Type: CONSTRAINT; Schema: public; Owner: yuki
+--
+
+ALTER TABLE ONLY public.pembeli
+    ADD CONSTRAINT pembeli_no_telp_key UNIQUE (no_telp);
+
+
+--
 -- Name: pembeli pembeli_pkey; Type: CONSTRAINT; Schema: public; Owner: yuki
 --
 
@@ -333,5 +351,5 @@ ALTER TABLE ONLY public.transaksi
 -- PostgreSQL database dump complete
 --
 
-\unrestrict tRwVNZ9vx1nVmi9qZ4GWla4o52VRcnSmlSxPFkC6dqi0famrU5Hm01gCabwmygV
+\unrestrict 7bmi6I1lNf3jHS5QGUoxmxNStkzerXYqJY188dGNoWQNahiI4qwGcXXawTEtTsX
 
