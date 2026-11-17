@@ -8,10 +8,10 @@ CREATE TABLE jenis_produk (
 
 CREATE TABLE produk (
   id_produk INT PRIMARY KEY,
-  id_jenis_produk INT,
-  nama_produk VARCHAR(200),
-  harga_satuan DECIMAL(12,2),
-  merek VARCHAR(100),
+  id_jenis_produk INT NOT NULL,
+  nama_produk VARCHAR(200) NOT NULL,
+  harga_satuan NUMERIC NOT NULL CHECK (harga_satuan > 0),
+  merek VARCHAR(100) NOT NULL,
   jumlah_stok INT,
   minimum_stok INT,
   CONSTRAINT produk_fk_id_jenis_produk FOREIGN KEY (id_jenis_produk) REFERENCES jenis_produk (id_jenis_produk)
@@ -19,7 +19,7 @@ CREATE TABLE produk (
 
 CREATE TABLE logistik (
   id_logistik INT PRIMARY KEY,
-  id_produk INT,
+  id_produk INT NOT NULL,
   stok_barang_masuk INT,
   tanggal_masuk DATE,
   CONSTRAINT logistik_fk_id_produk FOREIGN KEY (id_produk) REFERENCES produk (id_produk)
@@ -27,9 +27,9 @@ CREATE TABLE logistik (
 
 CREATE TABLE pembeli (
   id_pembeli INT PRIMARY KEY,
-  nama_pembeli VARCHAR(200),
-  no_telp VARCHAR(16),
-  email VARCHAR(100),
+  nama_pembeli VARCHAR(200) NOT NULL,
+  no_telp VARCHAR(16) UNIQUE,
+  email VARCHAR(100) UNIQUE,
   total_poin INT
 );
 
@@ -42,22 +42,22 @@ CREATE TABLE jadwal_shift (
 
 CREATE TABLE pegawai (
   id_pegawai INT PRIMARY KEY,
-  id_jadwal INT,
-  nama VARCHAR(200),
+  id_jadwal INT NOT NULL,
+  nama VARCHAR(200) NOT NULL,
   jenis_kelamin VARCHAR(10),
   no_telp VARCHAR(16),
-  jabatan VARCHAR(50),
+  jabatan VARCHAR(50) NOT NULL,
   alamat VARCHAR(300),
   CONSTRAINT pegawai_fk_id_jadwal FOREIGN KEY (id_jadwal) REFERENCES jadwal_shift (id_jadwal)
 );
 
 CREATE TABLE transaksi (
   kode_transaksi INT PRIMARY KEY,
-  id_pembeli INT,
-  id_pegawai INT,
-  total_pembayaran DECIMAL(12,2),
-  metode_pembayaran VARCHAR(50),
-  tanggal_transaksi DATE,
+  id_pembeli INT NOT NULL,
+  id_pegawai INT NOT NULL,
+  total_pembayaran NUMERIC,
+  metode_pembayaran VARCHAR(50) NOT NULL,
+  tanggal_transaksi DATE NOT NULL DEFAULT CURRENT_DATE,
   poin_transaksi INT,
   CONSTRAINT transaksi_fk_id_pembeli FOREIGN KEY (id_pembeli) REFERENCES pembeli (id_pembeli),
   CONSTRAINT transaksi_fk_id_pegawai FOREIGN KEY (id_pegawai) REFERENCES pegawai (id_pegawai)
@@ -65,10 +65,10 @@ CREATE TABLE transaksi (
 
 CREATE TABLE detail_transaksi (
   id_detail_transaksi INT PRIMARY KEY,
-  kode_transaksi INT,
-  id_produk INT,
-  jumlah_produk INT,
-  subtotal DECIMAL(12,2),
+  kode_transaksi INT NOT NULL,
+  id_produk INT NOT NULL,
+  jumlah_produk INT CHECK (jumlah_produk > 0),
+  subtotal NUMERIC,
   CONSTRAINT detail_transaksi_fk_kode_transaksi FOREIGN KEY (kode_transaksi) REFERENCES transaksi (kode_transaksi),
   CONSTRAINT detail_transaksi_fk_id_produk FOREIGN KEY (id_produk) REFERENCES produk (id_produk)
 );
