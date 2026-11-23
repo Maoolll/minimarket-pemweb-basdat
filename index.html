@@ -8,38 +8,92 @@
   </head>
 
   <body class="flex flex-col min-h-svh items-center">
-    <header class="w-full sticky top-0">
-      <nav class="flex bg-blue-400 p-4 gap-4 justify-between items-center">
-        <div>Logo</div>
-        <form id="search" class="w-2/3">
-          <input type="text" class="bg-white w-full rounded-md px-1" />
-        </form>
-        <div>User Icon</div>
-      </nav>
-    </header>
-    <main class="flex gap-4 grow w-full mt-4 md:w-2/3">
-      <div id="sidebar" class="w-48 shrink-0">
-        <div class="font-bold">Filter</div>
-        <script></script>
+    <header class="w-full">
+      <div class="ml-4 h-16 flex items-center gap-4">
+        <div class="h-8 w-8 rounded-full bg-blue-400">
+          <!--TODO: Replace with img tag-->
+        </div>
+        <div>
+          <div>Hello, <span class="text-blue-400">user</span>!</div>
+          <div class="text-xs text-gray-500">ID: <span>id</span></div>
+        </div>
       </div>
-      <div class="w-full">
-        Some header
+    </header>
+
+    <main class="flex-col flex gap-4 grow w-full mt-4 md:w-2/3">
+      <nav class="flex py-4 gap-4 items-center w-full justify-end">
+        <div class="flex mr-auto items-center gap-2">
+          <img src="/src/assets/icons/andrsrxn--map-pin.svg" class="w-4 h-4" />
+          <p>Area <span class="font-bold">Somewhere</span></p>
+        </div>
+        <div class="relative">
+          <div
+            class="w-8 h-8 rounded-full bg-yellow-400 flex justify-center items-center"
+          >
+            <img
+              src="/src/assets/icons/andrsrxn--shopping-cart.svg"
+              class="w-6 h-6"
+            />
+          </div>
+          <div
+            class="bg-red-500 min-w-4 h-4 top-0 right-0 absolute rounded-full translate-x-1/3 -translate-y-1/3 text-white text-10px leading-none flex items-center justify-center px-1 ring-2 ring-white empty:hidden"
+            id="cart-badge"
+          >
+            3
+          </div>
+        </div>
+        <form
+          id="search"
+          class="w-1/3 flex bg-blue-400 items-center rounded-full px-4"
+        >
+          <input
+            type="text"
+            class="w-full h-8"
+            placeholder="Search Something..."
+          />
+          <img src="/src/assets/icons/akar-icons--search.svg" class="h-6" />
+        </form>
+      </nav>
+      <div class="flex flex-col gap-2">
+        <p class="text-2xl">Category</p>
+        <template id="category-template">
+          <li>
+            <button
+              class="min-w-32 flex justify-center text-white rounded-full px-4 py-1 bg-gray-400 hover:bg-blue-200 data-[active=true]:bg-blue-500"
+              data-active="false"
+            >
+              NOTHING
+            </button>
+          </li>
+        </template>
+        <ul id="category-list" class="flex gap-4"></ul>
+        <script
+          src="/src/modules/categories/categories.js"
+          type="module"
+        ></script>
+      </div>
+      <p class="text-2xl mt-4">Products</p>
+      <div class="flex">
+        <div id="sidebar" class="w-48 shrink-0">
+          <div class="font-bold">Filter</div>
+          <script></script>
+        </div>
+        <template id="card-template">
+          <article class="overflow-hidden rounded-md">
+            <img
+              src="https://umamusu.wiki/w/images/8/85/Mihono_Bourbon_1koma_01_%28EN%29.jpeg"
+            />
+            <div class="product-name">You're not supposed to see this</div>
+          </article>
+        </template>
         <div
           id="cards"
-          class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
-        >
-          <template id="card-template">
-            <article class="overflow-hidden rounded-md">
-              <img
-                src="https://umamusu.wiki/w/images/8/85/Mihono_Bourbon_1koma_01_%28EN%29.jpeg"
-              />
-              <div class="product-name">You're not supposed to see this</div>
-            </article>
-          </template>
-        </div>
+          class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full"
+        ></div>
         <script src="/src/modules/card-maker.js" type="module"></script>
       </div>
     </main>
+
     <footer class="flex">
       <div>Unlicensed, this software is illegal</div>
     </footer>

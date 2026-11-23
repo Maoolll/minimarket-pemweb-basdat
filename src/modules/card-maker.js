@@ -16,7 +16,7 @@ function mkCard() {
 }
 
 function mkCardWithObject(object) {
-  var card = template.content.cloneNode(true);
+  let card = template.content.cloneNode(true);
   card.querySelector(".product-name").textContent = object.name;
   cards.append(card);
 }
