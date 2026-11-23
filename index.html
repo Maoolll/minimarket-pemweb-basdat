@@ -24,63 +24,20 @@
       </div>
       <div class="w-full">
         Some header
-        <div id="cards" class="grid grid-cols-5 gap-4">
-          <div
-            class="wrap-break-word rounded-md flex-col flex items-center overflow-hidden"
-          >
-            <img
-              class="h-2/3 w-full"
-              src="https://upload.wikimedia.org/wikipedia/en/6/6d/Katsuragi_Ace_at_Japan_Cup.jpg"
-            />
-            Matikanetannhauser
-          </div>
-          <div
-            class="wrap-break-word rounded-md flex-col flex items-center overflow-hidden"
-          >
-            <img
-              class="h-2/3 w-full"
-              src="https://upload.wikimedia.org/wikipedia/en/6/6d/Katsuragi_Ace_at_Japan_Cup.jpg"
-            />
-            Matikanetannhauser
-          </div>
-          <div
-            class="wrap-break-word rounded-md flex-col flex items-center overflow-hidden"
-          >
-            <img
-              class="h-2/3 w-full"
-              src="https://upload.wikimedia.org/wikipedia/en/6/6d/Katsuragi_Ace_at_Japan_Cup.jpg"
-            />
-            Matikanetannhauser
-          </div>
-          <div
-            class="wrap-break-word rounded-md flex-col flex items-center overflow-hidden"
-          >
-            <img
-              class="h-2/3 w-full"
-              src="https://upload.wikimedia.org/wikipedia/en/6/6d/Katsuragi_Ace_at_Japan_Cup.jpg"
-            />
-            Matikanetannhauser
-          </div>
-          <div
-            class="wrap-break-word rounded-md flex-col flex items-center overflow-hidden"
-          >
-            <img
-              class="h-2/3 w-full"
-              src="https://upload.wikimedia.org/wikipedia/en/6/6d/Katsuragi_Ace_at_Japan_Cup.jpg"
-            />
-            Matikanetannhauser
-          </div>
-          <div
-            class="wrap-break-word rounded-md flex-col flex items-center overflow-hidden"
-          >
-            <img
-              class="h-2/3 w-full"
-              src="https://upload.wikimedia.org/wikipedia/en/6/6d/Katsuragi_Ace_at_Japan_Cup.jpg"
-            />
-            Matikanetannhauser
-          </div>
+        <div
+          id="cards"
+          class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+        >
+          <template id="card-template">
+            <article class="overflow-hidden rounded-md">
+              <img
+                src="https://umamusu.wiki/w/images/8/85/Mihono_Bourbon_1koma_01_%28EN%29.jpeg"
+              />
+              <div class="product-name">You're not supposed to see this</div>
+            </article>
+          </template>
         </div>
-        <script></script>
+        <script src="/src/modules/card-maker.js" type="module"></script>
       </div>
     </main>
     <footer class="flex">
