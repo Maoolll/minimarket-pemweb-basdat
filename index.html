@@ -59,7 +59,7 @@
         <template id="category-template">
           <li>
             <button
-              class="min-w-32 flex justify-center text-white rounded-full px-4 py-1 bg-gray-400 hover:bg-blue-200 data-[active=true]:bg-blue-500"
+              class="min-w-32 flex justify-center text-white rounded-full px-4 py-1 bg-gray-400 hover:bg-blue-200 data-[active=true]:bg-blue-500 data-[active=true]:hover:bg-blue-500"
               data-active="false"
             >
               NOTHING
@@ -79,11 +79,18 @@
           <script></script>
         </div>
         <template id="card-template">
-          <article class="overflow-hidden rounded-md">
+          <article class="overflow-hidden rounded-md min-h-56">
             <img
               src="https://umamusu.wiki/w/images/8/85/Mihono_Bourbon_1koma_01_%28EN%29.jpeg"
             />
-            <div class="product-name">You're not supposed to see this</div>
+            <div class="product-name text-ellipsis overflow-hidden text-nowrap">You're not supposed to see this</div>
+            <div class="flex gap-2 items-center">
+              <div>$67</div>
+              <div class="flex flex-col text-[6pt]">
+                <div class="line-through">$69</div>
+                <div class="bg-red-600 text-white px-1">-10%</div>
+              </div>
+            </div>
           </article>
         </template>
         <div

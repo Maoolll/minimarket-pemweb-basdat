@@ -1,16 +1,15 @@
 import { generateCategories } from "./generate-categories.js";
 
-const label = ["Nothing", "Something"];
+const label = ["Nothing", "Something", "Snack", "Snack", "Snack"];
 
 generateCategories(label);
 
 const container = document.getElementById("category-list");
-const buttons = container.querySelectorAll("button");
+container.querySelector("button").dataset.active = true;
 
-for (let i = 0; i < buttons.length; i++) {
-  buttons[i].addEventListener("click", function () {
-    let activeBtn = container.querySelector("[data-active=true]");
-    if ( activeBtn != null ) activeBtn.dataset.active=false;
-    this.dataset.active = true;
-  });
-}
+container.addEventListener("click", function (evt) {
+  const button = evt.target.closest("button");
+  if (button == null) return;
+  container.querySelector("[data-active=true]")?.setAttribute("data-active", false);
+  button.setAttribute("data-active", "true");
+});
