@@ -4,7 +4,8 @@ const cards = new DocumentFragment();
 const cardContainer = document.getElementById("cards");
 const template = document.getElementById("card-template");
 
-for (let i = 0; i < 50; i++) {
+
+for (let i = 0; i < 49; i++) {
   mkCard();
 }
 

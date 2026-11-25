@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Document</title>
+    <link href="/src/style/tailwind.css" rel="stylesheet" />
+  </head>
+
+  <body class="flex flex-col min-h-svh items-center">
+    <header class="w-full">
+      <div class="ml-4 h-16 flex items-center gap-4">
+        <div class="h-8 w-8 rounded-full bg-blue-400">
+          <!--TODO: Replace with img tag-->
+        </div>
+        <div>
+          <div>Hello, <span class="text-blue-400">user</span>!</div>
+          <div class="text-xs text-gray-500">ID: <span>id</span></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex flex-col grow container mx-auto mt-4">
+      <div class="flex flex-col items-center gap-4 lg:flex-row lg:items-start">
+        <div class="w-108 h-128 shadow-lg flex flex-col gap-4">
+          <img
+            src="https://umamusu.wiki/w/images/8/85/Mihono_Bourbon_1koma_01_%28EN%29.jpeg"
+            class="w-full h-108 object-contain"
+          />
+          <ul class="flex gap-4 overflow-x-scroll">
+            <li class="w-16 h-16 flex justify-center items-center shrink-0">
+              <img
+                src="https://umamusu.wiki/w/images/8/85/Mihono_Bourbon_1koma_01_%28EN%29.jpeg"
+                class="object-contain"
+              />
+            </li>
+          </ul>
+        </div>
+        <div class="flex flex-col mx-auto container p-8 shadow-lg min-h-128">
+          <h1 class="text-3xl font-bold">Product name</h1>
+          <p>Price</p>
+          <div>
+            <button class="bg-blue-400 px-8">GET</button>
+          </div>
+          <p>Product description</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="flex">
+      <div>Unlicensed, this software is illegal</div>
+    </footer>
+
+    <script src="/src/modules/product-page.js" type="module"></script>
+  </body>
+</html>
