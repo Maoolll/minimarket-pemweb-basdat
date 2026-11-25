@@ -20,29 +20,77 @@
       </div>
     </header>
 
-    <main class="flex flex-col grow container mx-auto mt-4">
-      <div class="flex flex-col items-center gap-4 lg:flex-row lg:items-start">
-        <div class="w-108 h-128 shadow-lg flex flex-col gap-4">
-          <img
-            src="https://umamusu.wiki/w/images/8/85/Mihono_Bourbon_1koma_01_%28EN%29.jpeg"
-            class="w-full h-108 object-contain"
-          />
-          <ul class="flex gap-4 overflow-x-scroll">
-            <li class="w-16 h-16 flex justify-center items-center shrink-0">
-              <img
-                src="https://umamusu.wiki/w/images/8/85/Mihono_Bourbon_1koma_01_%28EN%29.jpeg"
-                class="object-contain"
-              />
-            </li>
-          </ul>
-        </div>
-        <div class="flex flex-col mx-auto container p-8 shadow-lg min-h-128">
-          <h1 class="text-3xl font-bold">That's weird...</h1>
-          <p>$99999999</p>
-          <div>
-            <button class="bg-blue-400 px-8">GET</button>
+    <main class="flex grow container mx-auto mt-4 gap-4">
+      <div class="w-108 flex flex-col gap-2">
+        <div class="bg-yellow-300 w-108 min-h-108 rounded-lg"></div>
+        <div class="flex">
+          <div class="grow">
+            <p class="text-2xl">Pocky Strawberry 75gr</p>
+            <div class="flex gap-2">
+              <p class="text-2xl text-red-500">Rp. 9,000</p>
+              <div class="text-xs">
+                <p class="text-gray-400 line-through">Rp. 10,000</p>
+                <span class="bg-red-500 text-white">-10 %</span>
+              </div>
+            </div>
+            <p class="text-sm text-gray-400">PT. Glico Indonesia</p>
           </div>
-          <p>It seems you've entered an invalid url. go back, idiot.</p>
+          <div>ID Produk: MM3317</div>
+        </div>
+      </div>
+
+      <div class="grow flex-col flex">
+        <div class="min-h-108 flex flex-col gap-4">
+          <nav class="flex py-4 gap-4 items-center w-full justify-end">
+            <div class="relative">
+              <div
+                class="w-8 h-8 rounded-full bg-yellow-400 flex justify-center items-center"
+              >
+                <img
+                  src="/src/assets/icons/andrsrxn--shopping-cart.svg"
+                  class="w-6 h-6"
+                />
+              </div>
+              <div
+                class="bg-red-500 min-w-4 h-4 top-0 right-0 absolute rounded-full translate-x-1/3 -translate-y-1/3 text-white text-10px leading-none flex items-center justify-center px-1 ring-2 ring-white empty:hidden"
+                id="cart-badge"
+              >
+                3
+              </div>
+            </div>
+            <form id="search" class="w-2/3 h-8 flex items-center">
+              <input
+                type="text"
+                class="w-full h-full pl-4 rounded-l-full bg-blue-400"
+                placeholder="Search Something..."
+              />
+              <button
+                type="submit"
+                class="bg-blue-400 h-full rounded-r-full flex items-center justify-center pr-4 cursor-pointer"
+              >
+                <img
+                  src="/src/assets/icons/akar-icons--search.svg"
+                  class="h-6"
+                />
+              </button>
+            </form>
+          </nav>
+
+          <p class="text-2xl font-bold">About Product :</p>
+          <p class="text-xl text-gray-400">lorem ipsum dolor sit amet</p>
+        </div>
+
+        <div class="justify-end">
+          <form class="flex flex-col w-full md:w-96 items-center">
+            <div>
+              <button>-</button>
+              <input type="number" placeholder="1" class="text-center [appearance:textfield]" />
+              <button>+</button>
+            </div>
+            <button class="bg-blue-400 p-4 rounded-full w-full">
+              Add to Cart
+            </button>
+          </form>
         </div>
       </div>
     </main>
