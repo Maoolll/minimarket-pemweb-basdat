@@ -5,18 +5,18 @@ const cardContainer = document.getElementById("cards");
 const template = document.getElementById("card-template");
 
 
-for (let i = 0; i < 49; i++) {
-  mkCard();
+for (let i = 0; i < data.length; i++) {
+  mkCard(data[i]);
 }
 
 cardContainer.replaceChildren(cards);
 
-function mkCard() {
+function mkTemplateCard() {
   const card = template.content.cloneNode(true);
   cards.append(card);
 }
 
-function mkCardWithObject(object) {
+function mkCard(object) {
   let card = template.content.cloneNode(true);
   card.querySelector(".product-name").textContent = object.name;
   cards.append(card);
