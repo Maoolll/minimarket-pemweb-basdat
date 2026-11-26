@@ -8,6 +8,7 @@
   </head>
 
   <body class="flex flex-col min-h-svh items-center">
+    <!--Header-->
     <header class="w-full">
       <div class="ml-4 h-16 flex items-center gap-4">
         <div class="h-8 w-8 rounded-full bg-blue-400">
@@ -20,77 +21,89 @@
       </div>
     </header>
 
-    <main class="flex grow container mx-auto mt-4 gap-4">
-      <div class="w-108 flex flex-col gap-2">
-        <div class="bg-yellow-300 w-108 min-h-108 rounded-lg"></div>
-        <div class="flex">
-          <div class="grow">
-            <p class="text-2xl">Pocky Strawberry 75gr</p>
-            <div class="flex gap-2">
-              <p class="text-2xl text-red-500">Rp. 9,000</p>
-              <div class="text-xs">
-                <p class="text-gray-400 line-through">Rp. 10,000</p>
-                <span class="bg-red-500 text-white">-10 %</span>
-              </div>
-            </div>
-            <p class="text-sm text-gray-400">PT. Glico Indonesia</p>
+    <main class="flex flex-col mt-4 gap-4 container mx-auto grow">
+      <!--Product View-->
+      <div
+        class="flex flex-col gap-4 w-full items-center justify-center md:flex-row md:items-start invisible"
+        id="product-container"
+      >
+        <!--Left panel-->
+        <div
+          class="w-108 flex flex-col gap-2 shadow-lg p-4 justify-center items-center shrink-0"
+        >
+          <div class="w-full h-108 relative">
+            <img
+              class="product-image w-full h-full rounded-lg object-scale-down"
+              src="/marlboro.jpg"
+            />
+            <img
+              src="/src/assets/icons/disc.svg"
+              class="discount-tag w-8 h-8 absolute top-0 right-4 invisible"
+            />
+            <a
+              href="/"
+              class="bg-blue-400 p-1 absolute top-0 left-4 rounded-full leading-none"
+              ><img
+                src="/src/assets/icons/akar-icons--arrow-left.svg"
+                class="h-4 w-4"
+            /></a>
           </div>
-          <div>ID Produk: MM3317</div>
-        </div>
-      </div>
-
-      <div class="grow flex-col flex">
-        <div class="min-h-108 flex flex-col gap-4">
-          <nav class="flex py-4 gap-4 items-center w-full justify-end">
-            <div class="relative">
-              <div
-                class="w-8 h-8 rounded-full bg-yellow-400 flex justify-center items-center"
-              >
-                <img
-                  src="/src/assets/icons/andrsrxn--shopping-cart.svg"
-                  class="w-6 h-6"
-                />
+          <div class="flex w-full">
+            <div class="grow">
+              <p class="product-name text-2xl">Evil</p>
+              <div class="flex gap-2">
+                <p
+                  class="product-price text-2xl data-[discounted=true]:text-red-500"
+                  data-discounted="false"
+                >
+                  Hmm
+                </p>
+                <div class="text-xs">
+                  <p
+                    class="product-original-price text-gray-400 line-through"
+                  ></p>
+                  <span
+                    class="product-discount bg-red-500 text-white px-1 empty:hidden"
+                  ></span>
+                </div>
               </div>
-              <div
-                class="bg-red-500 min-w-4 h-4 top-0 right-0 absolute rounded-full translate-x-1/3 -translate-y-1/3 text-white text-10px leading-none flex items-center justify-center px-1 ring-2 ring-white empty:hidden"
-                id="cart-badge"
-              >
-                3
-              </div>
+              <p class="product-manufacturer text-sm text-gray-400">
+                Setsuna Yuki inc.
+              </p>
             </div>
-            <form id="search" class="w-2/3 h-8 flex items-center">
-              <input
-                type="text"
-                class="w-full h-full pl-4 rounded-l-full bg-blue-400"
-                placeholder="Search Something..."
-              />
-              <button
-                type="submit"
-                class="bg-blue-400 h-full rounded-r-full flex items-center justify-center pr-4 cursor-pointer"
-              >
-                <img
-                  src="/src/assets/icons/akar-icons--search.svg"
-                  class="h-6"
+            <div class="text-sm text-gray-400">
+              ID Produk: <span class="product-id">S3TSUNA</span>
+            </div>
+          </div>
+        </div>
+
+        <!--Right panel-->
+        <div class="flex-col flex shadow-lg p-4 grow w-full">
+          <div class="min-h-108 flex flex-col gap-4">
+            <p class="text-2xl font-bold">About Product :</p>
+            <p class="text-xl text-gray-400">lorem ipsum dolor sit amet</p>
+          </div>
+
+          <div class="justify-end">
+            <!--Add to Cart-->
+            <form class="flex flex-col gap-2 w-full md:w-96 items-center" id="add-to-cart">
+              <div class="flex gap-2">
+                <button type="button" class="decrease bg-yellow-400 p-2 rounded-full"><img src="/src/assets/icons/akar-icons--minus.svg" class="w-4 h-4"></button>
+                <input
+                  type="number"
+                  class="buy-amount text-center [appearance:textfield]"
+                  value="1"
+                  min="1"
+                  placeholder="1"
                 />
+                <button type="button" class="increase bg-yellow-400 p-2 rounded-full"><img src="/src/assets/icons/akar-icons--plus.svg" class="w-4 h-4"></button>
+              </div>
+              <button class="bg-blue-400 p-4 rounded-full w-full">
+                Add to Cart
               </button>
+              <script src="/src/modules/product-page/add-to-cart.js" type="module"></script>
             </form>
-          </nav>
-
-          <p class="text-2xl font-bold">About Product :</p>
-          <p class="text-xl text-gray-400">lorem ipsum dolor sit amet</p>
-        </div>
-
-        <div class="justify-end">
-          <form class="flex flex-col w-full md:w-96 items-center">
-            <div>
-              <button>-</button>
-              <input type="number" placeholder="1" class="text-center [appearance:textfield]" />
-              <button>+</button>
-            </div>
-            <button class="bg-blue-400 p-4 rounded-full w-full">
-              Add to Cart
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </main>
@@ -99,6 +112,9 @@
       <div>Unlicensed, this software is illegal</div>
     </footer>
 
-    <script src="/src/modules/product-page.js" type="module"></script>
+    <script
+      src="/src/modules/product-page/render-page.js"
+      type="module"
+    ></script>
   </body>
 </html>

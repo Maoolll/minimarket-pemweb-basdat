@@ -83,22 +83,28 @@
         <template id="card-template">
           <a href="#">
             <article
-              class="rounded-md overflow-hidden h-56 max-w-48 flex flex-col py-2 cursor-pointer"
+              class="rounded-lg overflow-hidden h-64 max-w-56 flex flex-col p-2 cursor-pointer"
             >
-              <img
-                src="https://umamusu.wiki/w/images/8/85/Mihono_Bourbon_1koma_01_%28EN%29.jpeg"
-                class="h-44 object-scale-down"
-              />
+              <div class="relative h-44 flex justify-center items-center">
+                <img
+                  src="/marlboro.jpg"
+                  class="product-image h-full object-scale-down"
+                />
+                <img
+                  src="/src/assets/icons/disc.svg"
+                  class="discount-tag w-8 h-8 absolute top-0 right-4 invisible"
+                />
+              </div>
               <div
                 class="product-name text-ellipsis overflow-hidden text-nowrap"
               >
                 You're not supposed to see this
               </div>
               <div class="flex gap-2 items-center">
-                <div>$67</div>
-                <div class="flex flex-col text-[6pt]">
-                  <div class="line-through">$69</div>
-                  <div class="bg-red-600 text-white px-1">-10%</div>
+                <p class="product-price data-[discounted=true]:text-red-500" data-discounted="false">Rp. 67</p>
+                <div class="text-[6pt]">
+                  <p class="product-original-price line-through text-gray-400"></p>
+                  <span class="product-discount bg-red-500 text-white px-1 empty:hidden"></span>
                 </div>
               </div>
             </article>
