@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Document</title>
+    <link href="/src/style/tailwind.css" rel="stylesheet" />
+  </head>
+
+  <body class="flex flex-col min-h-svh items-center">
+    <!--Header-->
+    <header class="w-full">
+      <div class="ml-4 h-16 flex items-center gap-4">
+        <div class="h-8 w-8 rounded-full bg-blue-400">
+          <!--TODO: Replace with img tag-->
+        </div>
+        <div>
+          <div>Hello, <span class="text-blue-400">user</span>!</div>
+          <div class="text-xs text-gray-500">ID: <span>id</span></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex flex-col mt-4 gap-4 container mx-auto grow">
+      <!--Product View-->
+      <div
+        class="flex flex-col gap-4 w-full items-center justify-center md:flex-row md:items-start invisible"
+        id="product-container"
+      >
+        <!--Left panel-->
+        <div
+          class="w-108 flex flex-col gap-2 shadow-lg p-4 justify-center items-center shrink-0"
+        >
+          <div class="w-full h-108 relative">
+            <img
+              class="product-image w-full h-full rounded-lg object-scale-down"
+              src="/marlboro.jpg"
+            />
+            <img
+              src="/src/assets/icons/disc.svg"
+              class="discount-tag w-8 h-8 absolute top-0 right-4 invisible"
+            />
+            <a
+              href="/"
+              class="bg-blue-400 p-1 absolute top-0 left-4 rounded-full leading-none"
+              ><img
+                src="/src/assets/icons/akar-icons--arrow-left.svg"
+                class="h-4 w-4"
+            /></a>
+          </div>
+          <div class="flex w-full">
+            <div class="grow">
+              <p class="product-name text-2xl">Evil</p>
+              <div class="flex gap-2">
+                <p
+                  class="product-price text-2xl data-[discounted=true]:text-red-500"
+                  data-discounted="false"
+                >
+                  Hmm
+                </p>
+                <div class="text-xs">
+                  <p
+                    class="product-original-price text-gray-400 line-through"
+                  ></p>
+                  <span
+                    class="product-discount bg-red-500 text-white px-1 empty:hidden"
+                  ></span>
+                </div>
+              </div>
+              <p class="product-manufacturer text-sm text-gray-400">
+                Setsuna Yuki inc.
+              </p>
+            </div>
+            <div class="text-sm text-gray-400">
+              ID Produk: <span class="product-id">S3TSUNA</span>
+            </div>
+          </div>
+        </div>
+
+        <!--Right panel-->
+        <div class="flex-col flex shadow-lg p-4 grow w-full">
+          <div class="min-h-108 flex flex-col gap-4">
+            <p class="text-2xl font-bold">About Product :</p>
+            <p class="text-xl text-gray-400">lorem ipsum dolor sit amet</p>
+          </div>
+
+          <div class="justify-end">
+            <!--Add to Cart-->
+            <form class="flex flex-col gap-2 w-full md:w-96 items-center" id="add-to-cart">
+              <div class="flex gap-2">
+                <button type="button" class="decrease bg-yellow-400 p-2 rounded-full"><img src="/src/assets/icons/akar-icons--minus.svg" class="w-4 h-4"></button>
+                <input
+                  type="number"
+                  class="buy-amount text-center [appearance:textfield]"
+                  value="1"
+                  min="1"
+                  placeholder="1"
+                />
+                <button type="button" class="increase bg-yellow-400 p-2 rounded-full"><img src="/src/assets/icons/akar-icons--plus.svg" class="w-4 h-4"></button>
+              </div>
+              <button class="bg-blue-400 p-4 rounded-full w-full">
+                Add to Cart
+              </button>
+              <script src="/src/modules/product-page/add-to-cart.js" type="module"></script>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="flex">
+      <div>Unlicensed, this software is illegal</div>
+    </footer>
+
+    <script
+      src="/src/modules/product-page/render-page.js"
+      type="module"
+    ></script>
+  </body>
+</html>

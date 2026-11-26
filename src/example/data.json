@@ -1,0 +1,17 @@
+[
+  {
+    "id": "MM3317",
+    "name": "Pocky Strawberry 75gr",
+    "price": 10000,
+    "description": "A very long description",
+    "manufacturer": "PT. Glico Indonesia",
+    "img_path": "/example/img/products/p/pocky-strawb.png",
+    "discount_percentage": 0.1
+  },
+  {
+    "id": "MIE-143",
+    "name": "Mie",
+    "price": 20000,
+    "img_path": "/example/img/products/m/mie-putih.png"
+  }
+]

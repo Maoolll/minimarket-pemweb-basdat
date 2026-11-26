@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Document</title>
+    <link href="/src/style/tailwind.css" rel="stylesheet" />
+  </head>
+
+  <body class="flex flex-col min-h-svh items-center">
+    <header class="w-full">
+      <div class="ml-4 h-16 flex items-center gap-4">
+        <div class="h-8 w-8 rounded-full bg-blue-400">
+          <!--TODO: Replace with img tag-->
+        </div>
+        <div>
+          <div>Hello, <span class="text-blue-400">user</span>!</div>
+          <div class="text-xs text-gray-500">ID: <span>id</span></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-col flex gap-4 grow w-full mt-4 md:w-2/3">
+      <nav class="flex py-4 gap-4 items-center w-full justify-end">
+        <div class="flex mr-auto items-center gap-2">
+          <img src="/src/assets/icons/andrsrxn--map-pin.svg" class="w-4 h-4" />
+          <p>Area <span class="font-bold">Somewhere</span></p>
+        </div>
+        <div class="relative">
+          <div
+            class="w-8 h-8 rounded-full bg-yellow-400 flex justify-center items-center"
+          >
+            <img
+              src="/src/assets/icons/andrsrxn--shopping-cart.svg"
+              class="w-6 h-6"
+            />
+          </div>
+          <div
+            class="bg-red-500 min-w-4 h-4 top-0 right-0 absolute rounded-full translate-x-1/3 -translate-y-1/3 text-white text-10px leading-none flex items-center justify-center px-1 ring-2 ring-white empty:hidden"
+            id="cart-badge"
+          >
+            3
+          </div>
+        </div>
+        <form id="search" class="w-1/3 h-8 flex items-center">
+          <input
+            type="text"
+            class="w-full h-full pl-4 rounded-l-full bg-blue-400"
+            placeholder="Search Something..."
+          />
+          <button
+            type="submit"
+            class="bg-blue-400 h-full rounded-r-full flex items-center justify-center pr-4 cursor-pointer"
+          >
+            <img src="/src/assets/icons/akar-icons--search.svg" class="h-6" />
+          </button>
+        </form>
+      </nav>
+      <div class="flex flex-col gap-2">
+        <p class="text-2xl">Category</p>
+        <template id="category-template">
+          <li>
+            <button
+              class="min-w-32 flex justify-center text-white rounded-full px-4 py-1 bg-gray-400 hover:bg-blue-200 data-[active=true]:bg-blue-500 data-[active=true]:hover:bg-blue-500 cursor-pointer"
+              data-active="false"
+            >
+              NOTHING
+            </button>
+          </li>
+        </template>
+        <ul id="category-list" class="flex gap-4 overflow-x-scroll"></ul>
+        <script
+          src="/src/modules/categories/categories.js"
+          type="module"
+        ></script>
+      </div>
+      <p class="text-2xl mt-4">Products</p>
+      <div class="flex">
+        <div id="sidebar" class="w-48 shrink-0">
+          <div class="font-bold">Filter</div>
+          <script></script>
+        </div>
+        <template id="card-template">
+          <a href="#">
+            <article
+              class="rounded-lg overflow-hidden h-64 max-w-56 flex flex-col p-2 cursor-pointer"
+            >
+              <div class="relative h-44 flex justify-center items-center">
+                <img
+                  src="/marlboro.jpg"
+                  class="product-image h-full object-scale-down"
+                />
+                <img
+                  src="/src/assets/icons/disc.svg"
+                  class="discount-tag w-8 h-8 absolute top-0 right-4 invisible"
+                />
+              </div>
+              <div
+                class="product-name text-ellipsis overflow-hidden text-nowrap"
+              >
+                You're not supposed to see this
+              </div>
+              <div class="flex gap-2 items-center">
+                <p class="product-price data-[discounted=true]:text-red-500" data-discounted="false">Rp. 67</p>
+                <div class="text-[6pt]">
+                  <p class="product-original-price line-through text-gray-400"></p>
+                  <span class="product-discount bg-red-500 text-white px-1 empty:hidden"></span>
+                </div>
+              </div>
+            </article>
+          </a>
+        </template>
+        <div
+          id="cards"
+          class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-5 w-full"
+        ></div>
+        <script src="/src/modules/card-maker.js" type="module"></script>
+      </div>
+    </main>
+
+    <footer class="flex">
+      <div>Unlicensed, this software is illegal</div>
+    </footer>
+  </body>
+</html>
